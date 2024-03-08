@@ -1,0 +1,63 @@
+Found an ISO14443A card
+UID Length: 4
+UID Value: b'238764fa'
+Seems to be a Mifare Classic card (4 byte UID)
+Trying to authenticate block 4 with default KEYA value
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 4: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 5: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 6: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 7: b'000000000000ff078069ffffffffffff'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 8: b'48454c4c4f2020202020202020202020'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 9: b'20202020202020202020202020202020'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 10: b'20202020202020202020202020202020'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 11: b'000000000000ff078069ffffffffffff'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 12: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 13: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 14: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 15: b'000000000000ff078069ffffffffffff'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 16: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 17: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 18: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 19: b'000000000000ff078069ffffffffffff'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 20: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 21: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 22: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 23: b'000000000000ff078069ffffffffffff'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 24: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 25: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 26: b'00000000000000000000000000000000'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 27: b'000000000000ff078069ffffffffffff'
+Sector 1 (Blocks 4..7) has been authenticated
+Reading Block 28: b'00000000000000000000000000000000'
+
+
+000000000000ff078069ffffffffffff
+48454c4c4f2020202020202020202020
+20202020202020202020202020202020
+20202020202020202020202020202020
+
+48454c4c4f
