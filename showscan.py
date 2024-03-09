@@ -10,10 +10,10 @@ def draw_black_box(disp):
     height = disp.height
     rgbimage = Image.new("RGB", (width, height))
     # Get drawing object to draw on image.
-    draw = ImageDraw.Draw(image)
+    draw = ImageDraw.Draw(rgbimage)
     # Draw a black filled box to clear the image.
     draw.rectangle((0, 0, width, height), outline=0, fill=(0, 0, 0))
-    return image
+    return rgbimage
 
 def display_new_image(path, disp):
     width = disp.width 
