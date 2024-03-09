@@ -131,7 +131,6 @@ if not response:
     # Display image.
     path = "error.png"
     disp.image(display_new_image(path, disp))
-    return False
 else :
     path = "blinka.jpg"
     image = cv2.imread(path)
@@ -148,4 +147,3 @@ else :
     cv2.imwrite(newpath, imagenamed)
 
     disp.image(display_new_image(newpath, disp))
-    return True
