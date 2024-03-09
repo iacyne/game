@@ -6,18 +6,17 @@ from pn532pi import Pn532, pn532
 from pn532pi import Pn532Hsu
 
 def draw_black_box(disp):
-    width = disp.width  # we swap height/width to rotate it to landscape!
-    height = disp.height
+    height = disp.width
+    width = disp.height
     rgbimage = Image.new("RGB", (width, height))
     # Get drawing object to draw on image.
     draw = ImageDraw.Draw(rgbimage)
-    # Draw a black filled box to clear the image.
     draw.rectangle((0, 0, width, height), outline=0, fill=(0, 0, 0))
     return rgbimage
 
 def display_new_image(path, disp):
-    width = disp.width 
-    height = disp.height
+    height = disp.width
+    width = disp.height
     folderimage = Image.open(path)
     # Scale the image to the smaller screen dimension
     image_ratio = folderimage.width / folderimage.height
@@ -47,9 +46,7 @@ disp = st7735.ST7735R(spi, rotation=90,
 )
 
 # Create blank image for drawing.
-# Make sure to create image with mode 'RGB' for full color.
 disp.image(draw_black_box(disp))
-
 # Display image.
 path = "scanhere.jpg"
 disp.image(display_new_image(path, disp))
