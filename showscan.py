@@ -50,6 +50,10 @@ disp.image(draw_black_box(disp))
 # Display image.
 path = "scanhere.jpg"
 disp.image(display_new_image(path, disp))
+time.sleep(5)
+# Display image.
+path = "blinka.jpg"
+disp.image(display_new_image(path, disp))
 
 
 # import time
