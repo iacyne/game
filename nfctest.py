@@ -86,7 +86,7 @@ def loop():
             success, data = nfc.mifareultralight_ReadPage(4)
             value = 6
             if (success):
-                value = int.from_bytes(data[1], "big") 
+                value = data[1]
                 print(f"data lenght: {value}")
             else:
                 return False
