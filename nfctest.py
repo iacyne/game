@@ -33,7 +33,7 @@ def loop():
     #  'uid' will be populated with the UID, and uidLength will indicate
     #  if the uid is 4 bytes (Mifare Classic) or 7 bytes (Mifare Ultralight)
     check_uid = True
-    while True:
+    while check_uid:
         success, uid = nfc.readPassiveTargetID(pn532.PN532_MIFARE_ISO14443A_106KBPS)
         if(success):
             check_uid = False
