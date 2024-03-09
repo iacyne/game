@@ -128,7 +128,7 @@ response = loop()
 if not response:
     print("ERROR")
     # Display image.
-    path = "eror.jpg"
+    path = "error.jpg"
     disp.image(display_new_image(path, disp))
 else :
     path = "blinka.jpg"
