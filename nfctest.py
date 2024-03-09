@@ -95,7 +95,7 @@ def loop():
                 success, data = nfc.mifareultralight_ReadPage(i)
                 if (success):
                     #  Data seems to have been read ... spit it out
-                    response += data.decode("utf-8")
+                    response += data.decode("utf-8", errors='ignore')
                     print(f"{i}:{data}")
                     i+=1
                 else:
