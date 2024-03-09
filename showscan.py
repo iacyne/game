@@ -40,6 +40,7 @@ def display_new_image(path, disp):
 spi = board.SPI()
 
 disp = st7735.ST7735R(spi, rotation=90,
+    dc=digitalio.DigitalInOut(board.D25),
     cs=digitalio.DigitalInOut(board.CE0),
     rst=digitalio.DigitalInOut(board.D24),
     baudrate=24000000,
