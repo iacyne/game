@@ -1,48 +1,14 @@
-"""
-    This example will wait for any ISO14443A card or tag, and
-    depending on the size of the UID will attempt to read from it.
-   
-    If the card has a 4-byte UID it is probably a Mifare
-    Classic card, and the following steps are taken:
-   
-    - Authenticate block 4 (the first block of Sector 1) using
-      the default KEYA of 0XFF 0XFF 0XFF 0XFF 0XFF 0XFF
-    - If authentication succeeds, we can then read any of the
-      4 blocks in that sector (though only block 4 is read here)
-
-    If the card has a 7-byte UID it is probably a Mifare
-    Ultralight card, and the 4 byte pages can be read directly.
-    Page 4 is read by default since this is the first 'general-
-    purpose' page on the tags.
-
-    To enable debug message, define DEBUG in nfc/pn532_log.h
-"""
 import time
 import binascii
 
 from pn532pi import Pn532, pn532
-from pn532pi import Pn532I2c
-from pn532pi import Pn532Spi
 from pn532pi import Pn532Hsu
 
 # Set the desired interface to True
-SPI = False
-I2C = False
 HSU = True
 
-if SPI:
-    PN532_SPI = Pn532Spi(Pn532Spi.SS0_GPIO8)
-    nfc = Pn532(PN532_SPI)
-# When the number after #elif set as 1, it will be switch to HSU Mode
-elif HSU:
-    PN532_HSU = Pn532Hsu(Pn532Hsu.RPI_MINI_UART)
-    nfc = Pn532(PN532_HSU)
-
-# When the number after #if & #elif set as 0, it will be switch to I2C Mode
-elif I2C:
-    PN532_I2C = Pn532I2c(1)
-    nfc = Pn532(PN532_I2C)
-
+PN532_HSU = Pn532Hsu(Pn532Hsu.RPI_MINI_UART)
+nfc = Pn532(PN532_HSU)
 
 def setup():
     nfc.begin()
@@ -86,30 +52,24 @@ def loop():
             #  Start with block 4 (the first block of sector 1) since sector 0
             #  contains the manufacturer data and it's probably better just
             #  to leave it alone unless you know what you're doing
-            for i in range(4, 32):
+            for i in range(0, 32):
                 success = nfc.mifareclassic_AuthenticateBlock(uid, i, 0, keya)
 
                 if (success):
-                    print("Sector 1 (Blocks 4..7) has been authenticated")
-
-                    #  If you want to write something to block 4 to test with, uncomment
-                    #  the following line and this text should be read back in a minute
-                    # data = bytearray([ b'a', b'd', b'a', b'f', b'r', b'u', b'i', b't', b'.', b'c', b'o', b'm', 0, 0, 0, 0])
-                    # success = nfc.mifareclassic_WriteDataBlock (4, data)
 
                     #  Try to read the contents of block 4
                     success, data = nfc.mifareclassic_ReadDataBlock(i)
 
                     if (success):
                         #  Data seems to have been read ... spit it out
-                        print("Reading Block {}: {}".format(i, binascii.hexlify(data)))
+                        print(f"{i}:{data}")
                         i+=1
 
                     else:
-                        print("Ooops ... unable to read the requested block.  Try another key?")
+                        print("FAIL")
                         i+=1
                 else:
-                    print("Ooops ... authentication failed: Try another key?")
+                    print("FAIL")
                     i +=1
 
         elif (len(uid) == 7):
@@ -121,7 +81,7 @@ def loop():
             success, data = nfc.mifareultralight_ReadPage(4)
             if (success):
                 #  Data seems to have been read ... spit it out
-                binascii.hexlify(data)
+                print(data)
                 return True
 
             else:
