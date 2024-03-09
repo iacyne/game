@@ -94,4 +94,5 @@ if __name__ == '__main__':
     setup()
     found = loop()
     while not found:
+        time.sleep(5)
         found = loop()
