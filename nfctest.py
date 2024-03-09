@@ -78,14 +78,15 @@ def loop():
 
             #  Try to read the first general-purpose user page (#4)
             print("Reading page 4")
-            success, data = nfc.mifareultralight_ReadPage(4)
-            if (success):
-                #  Data seems to have been read ... spit it out
-                print(data)
-                return True
-
-            else:
-                print("Ooops ... unable to read the requested page!?")
+            for i in range(0, 32):
+                success, data = nfc.mifareultralight_ReadPage(i)
+                if (success):
+                    #  Data seems to have been read ... spit it out
+                    print(f"{i}:{data}")
+                    i+=1
+                else:
+                    print("FAIL")
+                    i+=1
 
     return False
 
