@@ -136,8 +136,8 @@ else :
     image = cv2.imread(path)
     text = response
     font = cv2.FONT_HERSHEY_SIMPLEX 
-    org = (50, 460)
-    fontScale = 1
+    org = (200, 450)
+    fontScale = 3
     color = (0, 0, 255)
     thickness = 2
 
