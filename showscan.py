@@ -129,17 +129,17 @@ if not response:
     print("ERROR")
 
     # Display image.
-    path = "error.png"
+    path = "error.jpg"
     disp.image(display_new_image(path, disp))
 else :
     path = "blinka.jpg"
     image = cv2.imread(path)
-    text = response
+    text = response[1:]
     font = cv2.FONT_HERSHEY_SIMPLEX 
     org = (200, 450)
-    fontScale = 3
+    fontScale = 2
     color = (0, 0, 255)
-    thickness = 2
+    thickness = 6
 
     imagenamed = cv2.putText(image, text, org, font, fontScale, color, thickness, cv2.LINE_AA, False)
     newpath = "test.jpg"
