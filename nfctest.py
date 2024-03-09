@@ -88,7 +88,7 @@ def loop():
             if (success):
                 lenght = data[1]
                 print(f"data lenght: {lenght}")
-                value = (lenght + 3) // 4
+                value = ((lenght + 3) // 4 + 5)
                 print(value)
             else:
                 return False
