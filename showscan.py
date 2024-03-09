@@ -1,4 +1,4 @@
-import digitalio, time, binascii, board, cv2
+import digitalio, time, binascii, board, cv2, neopixel
 from PIL import Image, ImageDraw
 from adafruit_rgb_display import st7735
 from pn532pi import Pn532, pn532
@@ -101,6 +101,12 @@ def display_new_image(path, disp):
     imageresized = imageresized.crop((x, y, x + width, y + height))
     return imageresized
 
+ORDER = neopixel.GRB
+pixels = neopixel.NeoPixel(board.D21, 14, brightness=0.2, auto_write=False, pixel_order=ORDER)
+
+pixels.fill((0,0,255))
+pixels.show()
+
 # Setup SPI bus using hardware SPI:
 spi = board.SPI()
 
@@ -125,6 +131,9 @@ disp.image(display_new_image(path, disp))
 setup()
 response = loop()
 
+pixels.fill((0,255,0))
+pixels.show()
+
 if not response:
     print("ERROR")
     # Display image.
@@ -144,3 +153,10 @@ else :
     cv2.imwrite(newpath, imagenamed)
 
     disp.image(display_new_image(newpath, disp))
+    
+while True:
+    pixels.fill((0,0,0))
+    for i in range(14):
+        pixels[i] = (255, 0, 0)
+        pixels.show()
+        time.sleep(.25)
