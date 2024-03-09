@@ -1,5 +1,4 @@
-import digitalio, time, binascii, board
-import board
+import digitalio, time, binascii, board, cv2
 from PIL import Image, ImageDraw
 from adafruit_rgb_display import st7735
 from pn532pi import Pn532, pn532
@@ -70,7 +69,7 @@ def loop():
                 else:
                     print("FAIL")
                     return False
-            print(response)
+        return response
 
 def draw_black_box(disp):
     height = disp.width
@@ -124,8 +123,29 @@ path = "scanhere.jpg"
 disp.image(display_new_image(path, disp))
 
 setup()
-loop()
+response = loop()
 
-# Display image.
-path = "blinka.jpg"
-disp.image(display_new_image(path, disp))
+if not response:
+    print("ERROR")
+
+    # Display image.
+    path = "error.png"
+    disp.image(display_new_image(path, disp))
+    return False
+else :
+    path = "blinka.jpg"
+    image = cv2.imread(path)
+    text = response
+    font = cv2.FONT_HERSHEY_SIMPLEX 
+    org = (50, 460)
+    fontScale = 1
+    color = (0, 0, 255)
+    thickness = 2
+
+    imagenamed = cv2.putText(image, text, org, font, fontScale, color, thickness, cv2.LINE_AA, False)
+    newpath = "test.jpg"
+
+    cv2.imwrite(newpath, imagenamed)
+
+    disp.image(display_new_image(newpath, disp))
+    return True
