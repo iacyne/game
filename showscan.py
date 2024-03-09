@@ -130,15 +130,14 @@ disp.image(display_new_image(path, disp))
 
 setup()
 response = loop()
-
-pixels.fill((0,255,0))
-pixels.show()
-
+led_color = (0,0,255)
 if not response:
     print("ERROR")
     # Display image.
     path = "error.jpg"
     disp.image(display_new_image(path, disp))
+    led_color = (255,0,0)
+    
 else :
     path = "blinka.jpg"
     image = cv2.imread(path)
@@ -151,12 +150,12 @@ else :
     imagenamed = cv2.putText(image, text, org, font, fontScale, color, thickness, cv2.LINE_AA, False)
     newpath = "test.jpg"
     cv2.imwrite(newpath, imagenamed)
-
     disp.image(display_new_image(newpath, disp))
-    
+    led_color = (0,255,0)
+
 while True:
     pixels.fill((0,0,0))
     for i in range(14):
-        pixels[i] = (255, 0, 0)
+        pixels[i] = led_color
         pixels.show()
         time.sleep(.25)
