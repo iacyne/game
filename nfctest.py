@@ -32,7 +32,11 @@ def loop():
     #  Wait for an ISO14443A type cards (Mifare, etc.).  When one is found
     #  'uid' will be populated with the UID, and uidLength will indicate
     #  if the uid is 4 bytes (Mifare Classic) or 7 bytes (Mifare Ultralight)
-    success, uid = nfc.readPassiveTargetID(pn532.PN532_MIFARE_ISO14443A_106KBPS)
+    check_uid = True
+    while True:
+        success, uid = nfc.readPassiveTargetID(pn532.PN532_MIFARE_ISO14443A_106KBPS)
+        if(success):
+            check_uid = False
 
     if (success):
         #  Display some basic information about the card
