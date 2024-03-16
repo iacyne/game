@@ -67,7 +67,7 @@ def loop():
 
                     if (success):
                         #  Data seems to have been read ... spit it out
-                        print(f"{i}:{data}")
+                        #print(f"{i}:{data}")
                         i+=1
 
                     else:
@@ -103,7 +103,7 @@ def loop():
                 else:
                     print("FAIL")
                     return False
-            print(response)
+            print(response[1:])
 
     return False
 

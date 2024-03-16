@@ -102,7 +102,7 @@ def display_new_image(path, disp):
     return imageresized
 
 ORDER = neopixel.GRB
-pixels = neopixel.NeoPixel(board.D21, 14, brightness=0.2, auto_write=False, pixel_order=ORDER)
+pixels = neopixel.NeoPixel(board.D21, 256, brightness=0.2, auto_write=False, pixel_order=ORDER)
 
 pixels.fill((0,0,255))
 pixels.show()
@@ -155,7 +155,7 @@ else :
 
 while True:
     pixels.fill((0,0,0))
-    for i in range(14):
+    for i in range(256):
         pixels[i] = led_color
         pixels.show()
-        time.sleep(.25)
+        time.sleep(.1)
